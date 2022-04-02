@@ -53,6 +53,11 @@ nvim_tree.setup({
 		relativenumber = false,
 		signcolumn = "yes",
 	},
+  actions = {
+    open_file = {
+      resize_window = true
+    }
+  },
 	trash = {
 		cmd = "trash",
 		require_confirm = true,

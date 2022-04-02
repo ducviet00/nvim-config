@@ -179,6 +179,32 @@ if vim.g.is_mac or vim.g.is_linux and sumneko_binary_path ~= "" then
   })
 end
 
+if utils.executable('rust-analyzer') then
+  lspconfig.rust_analyzer.setup({
+    on_attach = custom_attach,
+    capabilities = capabilities
+  })
+else
+  vim.notify("rust-analyzer not found!", "warn", {title = 'Nvim-config'})
+end
+
+local servers = {
+  'tsserver',
+  'ccls',
+  'dockerls',
+  'eslint',
+  'gopls',
+  'yamlls',
+  'jsonls',
+  'sqls'
+}
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup ({
+    on_attach = custom_attach,
+    capabilities = capabilities
+  })
+end
+
 -- Change diagnostic signs.
 vim.fn.sign_define("DiagnosticSignError", { text = "✗", texthl = "DiagnosticSignError" })
 vim.fn.sign_define("DiagnosticSignWarn", { text = "!", texthl = "DiagnosticSignWarn" })
