@@ -163,6 +163,7 @@ if g:is_win || g:is_mac
 endif
 
 """"""""""""""""""""""""""""better-escape.vim settings"""""""""""""""""""""""""
+let g:better_escape_shortcut = 'jk'
 let g:better_escape_interval = 200
 
 """"""""""""""""""""""""""""vim-xkbswitch settings"""""""""""""""""""""""""
